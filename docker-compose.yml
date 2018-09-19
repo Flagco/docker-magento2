@@ -37,7 +37,7 @@ services:
     labels:
       - "traefik.frontend.rule=Host:fpm.magento2.localhost"
     hostname: fpm.magento2.localhost
-    image: meanbee/magento2-php:7.2-fpm
+    image: meanbee/magento2-php:7.1-fpm
     ports:
       - 9000
     links:
@@ -68,7 +68,7 @@ services:
     labels:
       - "traefik.frontend.rule=Host:cli.magento2.localhost"
     hostname: cli.magento2.localhost
-    image: meanbee/magento2-php:7.2-cli
+    image: meanbee/magento2-php:7.1-cli
     links:
       - db
     volumes:
@@ -92,13 +92,13 @@ services:
       - M2SETUP_ADMIN_EMAIL=dummy@gmail.com
       - M2SETUP_ADMIN_USER=admin
       - M2SETUP_ADMIN_PASSWORD=password1
-      - M2SETUP_VERSION=2.1.*
+      - M2SETUP_VERSION=2.2.*
       - M2SETUP_USE_SAMPLE_DATA=true
     networks:
       - traefik_default
 
   cron:
-    image: meanbee/magento2-php:7.2-cli
+    image: meanbee/magento2-php:7.1-cli
     labels:
       - "traefik.frontend.rule=Host:magento2-cron.docker"
     hostname: magento2-cron.localhost
